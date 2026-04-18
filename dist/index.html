@@ -15,27 +15,71 @@
         <p class="subhead">Static HTML output with client-side sorting and filtering.</p>
       </div>
       <div class="meta-card">
-        <div><strong>Listings:</strong> <span id="listing-count">3</span></div>
-        <div><strong>Generated:</strong> 4/18/2026, 12:00:00 PM</div>
+        <div><strong>Listings:</strong> <span id="listing-count">0</span></div>
+        <div><strong>Generated:</strong> 4/18/2026, 10:30:30 AM</div>
         <div><strong>Source:</strong> <a href="https://kavyar.com/get-published" target="_blank" rel="noreferrer">get-published</a></div>
       </div>
     </header>
+
     <section class="controls">
-      <label><span>Search</span><input id="search" type="search" placeholder="Search title, owner, genre, URL..."></label>
-      <label><span>Genre</span><select id="genre-filter"><option value="">All</option></select></label>
-      <label><span>Medium</span><select id="medium-filter"><option value="">All</option></select></label>
-      <label><span>Exclusivity</span><select id="exclusivity-filter"><option value="">All</option><option value="true">Required</option><option value="false">Not required</option></select></label>
-      <label><span>Sort by</span><select id="sort-by"><option value="deadlineTs:asc">Deadline ↑</option><option value="deadlineTs:desc">Deadline ↓</option><option value="ownerInstagramFollowerCount:desc">Followers ↓</option><option value="ownerName:asc">Owner A–Z</option><option value="title:asc">Title A–Z</option></select></label>
+      <label>
+        <span>Search</span>
+        <input id="search" type="search" placeholder="Search title, owner, genre, URL...">
+      </label>
+      <label>
+        <span>Genre</span>
+        <select id="genre-filter"><option value="">All</option></select>
+      </label>
+      <label>
+        <span>Medium</span>
+        <select id="medium-filter"><option value="">All</option></select>
+      </label>
+      <label>
+        <span>Exclusivity</span>
+        <select id="exclusivity-filter">
+          <option value="">All</option>
+          <option value="true">Required</option>
+          <option value="false">Not required</option>
+        </select>
+      </label>
+      <label>
+        <span>Sort by</span>
+        <select id="sort-by">
+          <option value="deadlineTs:asc">Deadline ↑</option>
+          <option value="deadlineTs:desc">Deadline ↓</option>
+          <option value="ownerInstagramFollowerCount:desc">Followers ↓</option>
+          <option value="ownerName:asc">Owner A–Z</option>
+          <option value="title:asc">Title A–Z</option>
+        </select>
+      </label>
       <button id="reset-btn" type="button">Reset</button>
     </section>
+
     <section class="table-wrap">
       <table id="listings-table">
-        <thead><tr><th data-key="ownerName">Owner</th><th data-key="title">Title</th><th data-key="medium">Medium</th><th data-key="genres">Genres</th><th data-key="deadlineTs">Deadline</th><th data-key="minImages">Min</th><th data-key="maxImages">Max</th><th data-key="exclusivity">Exclusivity</th><th data-key="ownerInstagramFollowerCount">Followers</th><th data-key="url">URL</th></tr></thead>
-        <tbody><tr><td colspan="10" class="empty-state">Loading listings…</td></tr></tbody>
+        <thead>
+          <tr>
+            <th data-key="ownerName">Owner</th>
+            <th data-key="title">Title</th>
+            <th data-key="medium">Medium</th>
+            <th data-key="genres">Genres</th>
+            <th data-key="deadlineTs">Deadline</th>
+            <th data-key="minImages">Min</th>
+            <th data-key="maxImages">Max</th>
+            <th data-key="exclusivity">Exclusivity</th>
+            <th data-key="ownerInstagramFollowerCount">Followers</th>
+            <th data-key="url">URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="10" class="empty-state">Loading listings…</td>
+          </tr>
+        </tbody>
       </table>
     </section>
   </div>
-  <script id="kavyar-data" type="application/json">{"generatedAt": "2026-04-18T12:00:00.000Z", "source": "https://kavyar.com/get-published", "listingCount": 3, "listings": [{"ownerName": "Sample Magazine", "title": "Spring Fashion Editorial", "medium": "Print", "genres": ["fashion"], "deadline": "2026-05-01T00:00:00.000Z", "deadlineTs": 1777593600000, "minImages": 4, "maxImages": 12, "exclusivity": false, "ownerInstagram": "https://instagram.com/samplemag", "ownerInstagramFollowerCount": 45000, "ownerType": null, "ownerCity": null, "url": "https://kavyar.com/sample-magazine/submissions/spring-fashion-editorial", "sourceGenre": "fashion", "sourceSection": "get-published", "scrapedAt": "2026-04-18T12:00:00.000Z"}, {"ownerName": "Portrait House", "title": "Open Portrait Theme", "medium": "Digital", "genres": ["portrait"], "deadline": "2026-04-25T00:00:00.000Z", "deadlineTs": 1777075200000, "minImages": 2, "maxImages": 10, "exclusivity": true, "ownerInstagram": "https://instagram.com/portraithouse", "ownerInstagramFollowerCount": 18000, "ownerType": null, "ownerCity": null, "url": "https://kavyar.com/portrait-house/submissions/open-portrait-theme", "sourceGenre": "portrait", "sourceSection": "get-published", "scrapedAt": "2026-04-18T12:00:00.000Z"}, {"ownerName": "Beauty Quarterly", "title": "Beauty Special Issue", "medium": "Print", "genres": ["beauty", "glamour"], "deadline": null, "deadlineTs": null, "minImages": 3, "maxImages": 15, "exclusivity": null, "ownerInstagram": "https://instagram.com/beautyquarterly", "ownerInstagramFollowerCount": 92000, "ownerType": null, "ownerCity": null, "url": "https://kavyar.com/beauty-quarterly/submissions/beauty-special-issue", "sourceGenre": "beauty", "sourceSection": "get-published", "scrapedAt": "2026-04-18T12:00:00.000Z"}]}</script>
+  <script id="kavyar-data" type="application/json">{"generatedAt":"2026-04-18T17:30:30.541Z","source":"https://kavyar.com/get-published","listingCount":0,"listings":[]}</script>
   <script src="./app.js"></script>
 </body>
 </html>
