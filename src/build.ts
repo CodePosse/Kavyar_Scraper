@@ -14,12 +14,30 @@ function formatDate(iso: string | null): string {
   }).format(date);
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function safeJsonForHtml(value: unknown): string {
+  return JSON.stringify(value)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+}
+
 async function ensureData(): Promise<ScrapeOutput> {
   const raw = await fs.readFile(path.join(DATA_DIR, 'listings.json'), 'utf8');
   return JSON.parse(raw) as ScrapeOutput;
 }
 
-function htmlShell(listingCount: number, generatedAt: string): string {
+function htmlShell(data: ScrapeOutput): string {
+  const embeddedJson = safeJsonForHtml(data);
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -37,8 +55,8 @@ function htmlShell(listingCount: number, generatedAt: string): string {
         <p class="subhead">Static HTML output with client-side sorting and filtering.</p>
       </div>
       <div class="meta-card">
-        <div><strong>Listings:</strong> <span id="listing-count">${listingCount}</span></div>
-        <div><strong>Generated:</strong> ${new Date(generatedAt).toLocaleString()}</div>
+        <div><strong>Listings:</strong> <span id="listing-count">${data.listingCount}</span></div>
+        <div><strong>Generated:</strong> ${escapeHtml(new Date(data.generatedAt).toLocaleString())}</div>
         <div><strong>Source:</strong> <a href="${GET_PUBLISHED_URL}" target="_blank" rel="noreferrer">get-published</a></div>
       </div>
     </header>
@@ -93,10 +111,15 @@ function htmlShell(listingCount: number, generatedAt: string): string {
             <th data-key="url">URL</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr>
+            <td colspan="10" class="empty-state">Loading listings…</td>
+          </tr>
+        </tbody>
       </table>
     </section>
   </div>
+  <script id="kavyar-data" type="application/json">${embeddedJson}</script>
   <script src="./app.js"></script>
 </body>
 </html>`;
@@ -171,7 +194,7 @@ async function main(): Promise<void> {
   await fs.mkdir(DIST_DIR, { recursive: true });
   const data = await ensureData();
 
-  const indexHtml = htmlShell(data.listingCount, data.generatedAt);
+  const indexHtml = htmlShell(data);
   await fs.writeFile(path.join(DIST_DIR, 'index.html'), indexHtml, 'utf8');
   await fs.copyFile(path.join('templates', 'style.css'), path.join(DIST_DIR, 'style.css'));
   await fs.copyFile(path.join('templates', 'app.js'), path.join(DIST_DIR, 'app.js'));

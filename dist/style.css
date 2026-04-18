@@ -105,3 +105,11 @@ a { color: var(--accent); }
   .page-header { flex-direction: column; }
   .meta-card { width: 100%; min-width: 0; }
 }
+
+
+.empty-state {
+  text-align: center;
+  color: #666;
+  padding: 2rem 1rem;
+  white-space: normal;
+}

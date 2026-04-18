@@ -47,6 +47,8 @@ npm run start
 
 Then open `http://localhost:8080`.
 
+You can also open `dist/index.html` directly from disk now because the build embeds the listing data into the HTML as a fallback.
+
 ## Notes
 
 - The scraper currently targets public `get-published/<genre>` pages and linked `/submissions/` pages.
@@ -60,3 +62,10 @@ Then open `http://localhost:8080`.
 - `src/build.ts` – generates static HTML, JSON, CSV, and XLSX
 - `templates/app.js` – client-side table sorting and filtering
 - `templates/style.css` – styles for the static page
+
+
+## Important build change
+
+- `index.html` now embeds the full dataset in a `<script type="application/json">` block.
+- `app.js` uses embedded data first, then falls back to `data.json` when served over HTTP.
+- If the dataset is empty, the page shows a visible empty-state message instead of a blank table.
