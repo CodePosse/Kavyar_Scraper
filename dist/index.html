@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kavyar Submission Listings</title>
+  <meta name="description" content="Sortable and filterable static directory of Kavyar submission listings.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <div>
+        <h1>Kavyar Submission Listings</h1>
+        <p class="subhead">Static HTML output with client-side sorting and filtering.</p>
+      </div>
+      <div class="meta-card">
+        <div><strong>Listings:</strong> <span id="listing-count">0</span></div>
+        <div><strong>Generated:</strong> 4/18/2026, 10:10:08 AM</div>
+        <div><strong>Source:</strong> <a href="https://kavyar.com/get-published" target="_blank" rel="noreferrer">get-published</a></div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <label>
+        <span>Search</span>
+        <input id="search" type="search" placeholder="Search title, owner, genre, URL...">
+      </label>
+      <label>
+        <span>Genre</span>
+        <select id="genre-filter"><option value="">All</option></select>
+      </label>
+      <label>
+        <span>Medium</span>
+        <select id="medium-filter"><option value="">All</option></select>
+      </label>
+      <label>
+        <span>Exclusivity</span>
+        <select id="exclusivity-filter">
+          <option value="">All</option>
+          <option value="true">Required</option>
+          <option value="false">Not required</option>
+        </select>
+      </label>
+      <label>
+        <span>Sort by</span>
+        <select id="sort-by">
+          <option value="deadlineTs:asc">Deadline ↑</option>
+          <option value="deadlineTs:desc">Deadline ↓</option>
+          <option value="ownerInstagramFollowerCount:desc">Followers ↓</option>
+          <option value="ownerName:asc">Owner A–Z</option>
+          <option value="title:asc">Title A–Z</option>
+        </select>
+      </label>
+      <button id="reset-btn" type="button">Reset</button>
+    </section>
+
+    <section class="table-wrap">
+      <table id="listings-table">
+        <thead>
+          <tr>
+            <th data-key="ownerName">Owner</th>
+            <th data-key="title">Title</th>
+            <th data-key="medium">Medium</th>
+            <th data-key="genres">Genres</th>
+            <th data-key="deadlineTs">Deadline</th>
+            <th data-key="minImages">Min</th>
+            <th data-key="maxImages">Max</th>
+            <th data-key="exclusivity">Exclusivity</th>
+            <th data-key="ownerInstagramFollowerCount">Followers</th>
+            <th data-key="url">URL</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
